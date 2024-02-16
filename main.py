@@ -31,8 +31,7 @@ while j==True:
         #Actu
         elif menuUsuario==2:
             act=input("Pon el nombre de quien actualizar:\n")
-            if any(int(bus["nombre"]==act for bus in datas)):
-                for llave, valor in datas:
+            for llave, valor in datas:
                     for ser,nose in valor:
                         if nose==act:
                             qCambiar=input("Que cambiaras:\n")
@@ -60,7 +59,7 @@ while j==True:
     #Historial usuarios
     elif qHacer==2:
         
-        UActu=input("Deseas:\n1.Crear un servicio\n2.Actualizar un servicio\n3.Eliminar un servicio\n4. Ver PQR\n")
+        UActu=int(input("Deseas:\n1.Crear un servicio\n2.Actualizar un servicio\n3.Eliminar un servicio\n4. Ver PQR\n"))
         bas=[]
         #Crear
         if UActu==1:
@@ -72,8 +71,7 @@ while j==True:
         #Actu
         elif UActu==2:
             act=int(input("Pon el id de quien actualizar:\n"))
-            if any(bus["id"]==act for bus in histo):
-                for llave, valor in histo:
+            for llave, valor in histo:
                     for ser,nose in valor:
                         if nose==act:
                             qCambiar=input("Que cambiaras:\n")
@@ -116,21 +114,20 @@ while j==True:
         
         if estres==1:
             yes=int(input("Pon ID del cliente:\n"))
-            if any(bus["id"]==yes for bus in histo):
-                for llave, valor in histo:
-                        for ser,nose in valor:
-                            if nose==yes:
-                                apri.append(nose)
-                                print(apri)
+            for llave, valor in histo:
+                for ser,nose in valor:
+                    if nose==yes:
+                        apri.append(nose)
+                        print(apri)
         elif estres==2:
             apri=[]
             falling=input("Pon el registro que deseas buscar\n")
-            if any(bus["registro"]==falling for bus in histo):
-                for llave, valor in histo:
-                        for ser,nose in valor:
-                            if nose==falling:
+            
+            for llave, valor in histo.itmes():
+                        for nose in valor:
+                            if nose["registro"].lower()==falling:
                                 apri.append(nose)
-                                print()
+                                print(apri)
 
 
         
@@ -143,12 +140,15 @@ while j==True:
         file=("pqr.json","r")
         pqr=json.load
 
-        tiempo=pqr["tiempo"]
+        tiempo=int(pqr["tiempo"])
         bermeja=[]
         for llave, valor in pqr:
-            for ser,nose in valor:
-                if nose==falling:
-                     bermeja.append(nose)
+            for tiempo in valor:
+                if tiempo >=10:
+                     bermeja.append(tiempo)
+                    
+                    
+        print(bermeja)
 
 
 
